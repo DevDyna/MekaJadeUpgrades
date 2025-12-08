@@ -119,7 +119,8 @@ configurations {
 }
 
 dependencies {
-
+implementation "curse.maven:meka-268560:6895130"
+implementation "curse.maven:jade-324717:6853386"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -136,8 +137,10 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_license            : mod_license,
             mod_version            : mod_version,
             mod_authors            : mod_authors,
-            mod_description        : mod_description
-    ]
+            mod_description        : mod_description,
+            meka_version_range     : meka_version_range,
+            jade_version_range     : jade_version_range   
+            ]
     inputs.properties replaceProperties
     expand replaceProperties
     from "src/main/templates"
