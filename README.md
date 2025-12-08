@@ -1,3 +1,2 @@
-# TODO
-### I NEED TO REWORK THIS REPOSITORY UPDATING SOME API
-### BUT I'M LAZY!
+# MekaJadeUpgrades
+Mekanism addon to add extra tooltips on Jade to show installed upgrades
