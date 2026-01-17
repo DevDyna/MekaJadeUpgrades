@@ -44,11 +44,22 @@ public enum UpgradeProvider implements IBlockComponentProvider, IServerDataProvi
     }
 
     public IElement item(Upgrade upgrade, int x) {
-        return IElementHelper.get()
-                .item(new ItemStack(getUpgrade(upgrade).get()), 0.55f)
-                .size(new Vec2(10, 10))
-                .translate(new Vec2(x, -2))
-                .message(null);
+        try {
+
+            return IElementHelper.get()
+                    .item(new ItemStack(getUpgrade(upgrade).get()), 0.55f)
+                    .size(new Vec2(10, 10))
+                    .translate(new Vec2(x, -2))
+                    .message(null);
+
+        } catch (NullPointerException e) {
+            // catch eventual crashes with a dummy item render
+            return IElementHelper.get()
+                    .item(new ItemStack(Items.BARRIER), 0.55f)
+                    .size(new Vec2(10, 10))
+                    .translate(new Vec2(x, -2))
+                    .message(null);
+        }
     }
 
     public IElement countText(int count, int x) {
@@ -61,12 +72,13 @@ public enum UpgradeProvider implements IBlockComponentProvider, IServerDataProvi
 
     @Override
     public void appendServerData(CompoundTag data, BlockAccessor accessor) {
-        
+
         TileEntityMekanism be = (TileEntityMekanism) accessor.getBlockEntity();
 
         for (Upgrade upgrade : Upgrade.values())
-            if (be.getComponent().isUpgradeInstalled(upgrade))
-                data.putInt(upgrade.getSerializedName(), be.getComponent().getUpgrades(upgrade));
+            if (be.getComponent() != null)
+                if (be.getComponent().isUpgradeInstalled(upgrade))
+                    data.putInt(upgrade.getSerializedName(), be.getComponent().getUpgrades(upgrade));
 
     }
 
