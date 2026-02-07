@@ -11,6 +11,5 @@ public class Main {
 
     public Main(IEventBus bus, ModContainer mc) {
 
-
     }
 }
