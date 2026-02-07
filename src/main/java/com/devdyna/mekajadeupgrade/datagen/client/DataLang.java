@@ -15,9 +15,7 @@ public class DataLang extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add("config.jade.plugin_"+Main.MODID+".upgrades", "MekaJadeUpgrades Info");
+        add("config.jade.plugin_" + Main.MODID + ".upgrades", "MekaJadeUpgrades Info");
     }
-
-
 
 }
