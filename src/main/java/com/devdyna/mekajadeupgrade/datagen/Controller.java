@@ -4,13 +4,12 @@ import com.devdyna.mekajadeupgrade.datagen.client.DataLang;
 import static com.devdyna.mekajadeupgrade.Main.MODID;
 
 import net.minecraft.data.PackOutput;
+import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-@SuppressWarnings({ "removal", "null", "deprecation" })
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = MODID)
 public class Controller {
     @SubscribeEvent

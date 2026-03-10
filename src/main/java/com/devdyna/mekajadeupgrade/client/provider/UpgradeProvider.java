@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec2;
-import net.neoforged.fml.ModList;
+import net.minecraftforge.fml.ModList;
 import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.ui.IElement;
 import snownee.jade.api.ui.IElementHelper;
@@ -20,8 +20,10 @@ import mekanism.api.Upgrade;
 import mekanism.common.item.ItemUpgrade;
 import mekanism.common.registration.impl.ItemRegistryObject;
 import mekanism.common.registries.MekanismItems;
-import com.jerry.mekextras.api.ExtraUpgrade;
-import com.jerry.mekextras.common.registries.ExtraItems;
+
+import com.jerry.mekanism_extras.api.ExtraUpgrade;
+import com.jerry.mekanism_extras.common.registry.ExtraItem;
+
 
 import dev.lapis256.mekanism_empowered.api.MekEmpUpgrade;
 import dev.lapis256.mekanism_empowered.common.init.MekEmpItems;
@@ -38,8 +40,8 @@ public enum UpgradeProvider implements IBlockComponentProvider, IServerDataProvi
         int x = 0;
 
         for (Upgrade upgrade : Upgrade.values()) {
-            if (tag.contains(upgrade.getSerializedName())) {
-                int count = tag.getInt(upgrade.getSerializedName());
+            if (tag.contains(upgrade.getRawName())) {
+                int count = tag.getInt(upgrade.getRawName());
 
                 elements.add(item(upgrade, x));
                 elements.add(countText(count, x));
@@ -85,13 +87,13 @@ public enum UpgradeProvider implements IBlockComponentProvider, IServerDataProvi
         for (Upgrade upgrade : Upgrade.values())
             if (be.getComponent() != null)
                 if (be.getComponent().isUpgradeInstalled(upgrade))
-                    data.putInt(upgrade.getSerializedName(), be.getComponent().getUpgrades(upgrade));
+                    data.putInt(upgrade.getRawName(), be.getComponent().getUpgrades(upgrade));
 
     }
 
     @Override
     public ResourceLocation getUid() {
-        return ResourceLocation.fromNamespaceAndPath(Main.MODID, "upgrades");
+        return new ResourceLocation(Main.MODID, "upgrades");
     }
 
     public ItemRegistryObject<ItemUpgrade> getUpgrade(Upgrade upgrade) {
@@ -100,8 +102,8 @@ public enum UpgradeProvider implements IBlockComponentProvider, IServerDataProvi
             return MekanismItems.SPEED_UPGRADE;
         if (Upgrade.ENERGY.equals(upgrade))
             return MekanismItems.ENERGY_UPGRADE;
-        if (Upgrade.CHEMICAL.equals(upgrade))
-            return MekanismItems.CHEMICAL_UPGRADE;
+        if (Upgrade.GAS.equals(upgrade))
+            return MekanismItems.GAS_UPGRADE;
         if (Upgrade.ANCHOR.equals(upgrade))
             return MekanismItems.ANCHOR_UPGRADE;
         if (Upgrade.FILTER.equals(upgrade))
@@ -116,13 +118,13 @@ public enum UpgradeProvider implements IBlockComponentProvider, IServerDataProvi
         if (ModList.get().isLoaded("mekanism_extras")) {
 
             if (ExtraUpgrade.STACK.equals(upgrade))
-                return ExtraItems.STACK;
+                return ExtraItem.STACK;
 
             if (ExtraUpgrade.CREATIVE.equals(upgrade))
-                return ExtraItems.CREATIVE;
+                return ExtraItem.CREATIVE;
 
             if (ExtraUpgrade.IONIC_MEMBRANE.equals(upgrade))
-                return ExtraItems.IONIC_MEMBRANE;
+                return ExtraItem.IONIC_MEMBRANE;
 
         }
 

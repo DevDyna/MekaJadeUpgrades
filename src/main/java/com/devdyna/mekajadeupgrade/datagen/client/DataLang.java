@@ -5,7 +5,7 @@ import static com.devdyna.mekajadeupgrade.Main.MODID;
 import com.devdyna.mekajadeupgrade.Main;
 
 import net.minecraft.data.PackOutput;
-import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.minecraftforge.common.data.LanguageProvider;
 
 public class DataLang extends LanguageProvider {
 
