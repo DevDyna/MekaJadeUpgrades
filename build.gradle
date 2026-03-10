@@ -125,16 +125,16 @@ obfuscation {
 }
 
 dependencies {
-implementation "curse.maven:meka-268560:7132168"
-implementation "curse.maven:mekaextra-1026040:7404505"
-implementation "curse.maven:jade-324717:6853386"
+implementation "curse.maven:meka-268560:6552911"
+implementation "curse.maven:mekaextra-1026040:6936409"
+implementation "curse.maven:jade-324717:6855440"
 
-implementation "curse.maven:empo-1256390:7373610"
-implementation "curse.maven:empocore-1256399:7373611"
-implementation "curse.maven:kotlin-351264:7471280"
+implementation "curse.maven:empo-1256390:7545276"
+implementation "curse.maven:empocore-1256399:7545277"
+implementation "curse.maven:kotlin-351264:7291067"
 
-implementation "curse.maven:iglee-541199:7000755"
-implementation "curse.maven:evo-1230085:7321395"
+implementation "curse.maven:iglee-541199:6987117"
+implementation "curse.maven:evo-1230085:7599591"
 
 }
 
