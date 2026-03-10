@@ -1,5 +1,6 @@
-modLoader="javafml"
+modLoader="javafml" 
 loaderVersion="${loader_version_range}"
+
 license="${mod_license}"
 
 [[mods]]
@@ -9,32 +10,35 @@ displayName="${mod_name}"
 authors="${mod_authors}"
 description='''${mod_description}'''
 
-[[dependencies.${mod_id}]]
-    modId="neoforge"
-    type="required"
-    versionRange="${neo_version_range}"
+[[dependencies.${mod_id}]] 
+    modId="forge" 
+    mandatory=true 
+    versionRange="${forge_version_range}" 
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
     modId="minecraft"
-    type="required"
+    mandatory=true
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
 
 
+
 [[dependencies.${mod_id}]]
     modId="mekanism"
-    type="required"
+    mandatory=false
     versionRange="${meka_version_range}"
     ordering="NONE"
     side="BOTH"
 
 
+
 [[dependencies.${mod_id}]]
     modId="jade"
-    type="required"
+    mandatory=false
     versionRange="${jade_version_range}"
-    ordering="NONE"
+	ordering="NONE"
     side="BOTH"
+
